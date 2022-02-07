@@ -10,6 +10,7 @@ class QuoteContainer extends React.Component {
             author: '',
             color: ''
         }
+        this.getRandomQuote.bind(this);
     }
 
     componentDidMount() {
@@ -56,7 +57,17 @@ class QuoteContainer extends React.Component {
         return Math.floor(Math.random() * max);
     }
     
-    getRandomQuote() {
+    newQuoteClicked() {
+        const newQuote = this.getRandomQuote();
+        const newColor = this.getRandomColor();
+        this.setState({
+            quote: newQuote.quote,
+            author: newQuote.author,
+            color: newColor
+        })
+    }
+
+    getRandomQuote = () => {
         const index = this.getRandomInt(this.quotes.length);
         return {
             "quote": this.quotes[index],
@@ -99,7 +110,7 @@ class QuoteContainer extends React.Component {
                         margin:0
                     }}
                 >
-                    <QuoteCard id="quote-box" quote={this.state.quote} author={this.state.author} color={this.state.color} />
+                    <QuoteCard id="quote-box" quote={this.state.quote} author={this.state.author} color={this.state.color} callback={this.newQuoteClicked.bind(this)}/>
                 </Grid>
             </>
         );
