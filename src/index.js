@@ -5,6 +5,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import rootReducer from './redux/index.js'
 import App from './components/App'
+import '../node_modules/font-awesome/css/font-awesome.min.css'; 
 
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
